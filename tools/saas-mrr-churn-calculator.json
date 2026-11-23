@@ -1,0 +1,73 @@
+{
+  "slug": "saas-mrr-churn-calculator",
+  "title": "SaaS MRR, ARR, LTV & Net Churn Projection Calculator",
+  "short_title": "SaaS MRR & Churn Calculator",
+  "category": "saas",
+  "category_label": "SaaS Metrics",
+  "meta_description": "Model 12-month SaaS MRR growth, ARR, Net Dollar Retention (NDR), customer lifetime value (LTV), and compounding monthly revenue churn.",
+  "badge": "SaaS KPI",
+  "lead": "Project 12-month recurring revenue compounding by balancing new monthly MRR, expansion upgrades, and gross revenue churn.",
+  "inputs": [
+    {
+      "id": "mrr",
+      "label": "Current Starting MRR ($)",
+      "type": "number",
+      "default": 15000,
+      "min": 0,
+      "step": "500"
+    },
+    {
+      "id": "new_mrr",
+      "label": "New MRR Added per Month ($)",
+      "type": "number",
+      "default": 2500,
+      "min": 0,
+      "step": "100"
+    },
+    {
+      "id": "churn_pct",
+      "label": "Monthly Gross Revenue Churn (%)",
+      "type": "number",
+      "default": 3.5,
+      "min": 0,
+      "max": 100,
+      "step": "0.1"
+    },
+    {
+      "id": "expansion_pct",
+      "label": "Monthly Expansion / Upsell Rate (%)",
+      "type": "number",
+      "default": 1.5,
+      "min": 0,
+      "max": 100,
+      "step": "0.1"
+    },
+    {
+      "id": "arpu",
+      "label": "Average Revenue per Account (ARPU) ($)",
+      "type": "number",
+      "default": 99,
+      "min": 1,
+      "step": "1"
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Projected MRR (Month 12)", "default": "$35,342.49", "highlight": true },
+    { "id": "arr12", "label": "Projected ARR (Month 12)", "default": "$424,109.88" },
+    { "id": "ndr", "label": "Annualized Net Dollar Retention", "default": "78.47%" },
+    { "id": "ltv", "label": "Gross Customer LTV", "default": "$2,828.57" }
+  ],
+  "chart": true,
+  "formula_html": "<p><strong>Monthly Recursion:</strong> <code>MRR[t] = MRR[t-1] &times; (1 - Churn% + Expansion%) + New MRR</code>.</p><p><strong>Customer LTV:</strong> <code>ARPU / Monthly Gross Churn Rate</code>. <strong>Net Dollar Retention (12m):</strong> <code>(1 - Churn% + Expansion%)<sup>12</sup></code>.</p>",
+  "faqs": [
+    {
+      "q": "What is negative net churn (NDR > 100%)?",
+      "a": "When expansion MRR from seat growth or tier upgrades exceeds gross churned revenue, your existing customer cohort grows automatically every month even without new signups."
+    },
+    {
+      "q": "Where does SaaS MRR plateau if churn stays constant?",
+      "a": "When net retention is below 100%, MRR approaches a mathematical ceiling equal to New Monthly MRR divided by Net Monthly Churn Rate."
+    }
+  ],
+  "related": ["stripe-fee-calculator", "wise-vs-bank-fx-calculator", "shopify-profit-margin-calculator"]
+}

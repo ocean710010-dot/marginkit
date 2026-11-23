@@ -1,0 +1,9 @@
+{
+  "site_name": "MarginKit",
+  "tagline": "Free B2B Fee, Profit Margin & SaaS Calculators",
+  "description": "Fast, transparent financial calculators for Stripe & PayPal fees, Shopify & Amazon FBA margins, EU VAT, freelance rates, SaaS MRR churn, and cross-border FX.",
+  "base_url": "https://ocean710010-dot.github.io/marginkit",
+  "base_path": "/marginkit",
+  "contact_email": "contact@marginkit.example",
+  "copyright_year": 2026
+}

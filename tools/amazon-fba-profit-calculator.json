@@ -1,0 +1,100 @@
+{
+  "slug": "amazon-fba-profit-calculator",
+  "title": "Amazon FBA Profit, ROI & Break-Even ACOS Calculator",
+  "short_title": "Amazon FBA Profit Calculator",
+  "category": "ecommerce",
+  "category_label": "E-commerce",
+  "meta_description": "Calculate Amazon FBA net profit per unit, referral fees, FBA fulfillment and storage costs, ROI, net margin, and break-even PPC ACOS.",
+  "badge": "FBA Tool",
+  "lead": "Evaluate Amazon product viability in seconds—see true net profit per unit, ROI on landed cost, and exact break-even ACOS.",
+  "inputs": [
+    {
+      "id": "cat_preset",
+      "label": "Amazon Category Referral Rate",
+      "type": "select",
+      "options": [
+        { "value": "15", "label": "Standard Categories (15%)", "selected": true },
+        { "value": "8", "label": "Consumer Electronics (8%)" },
+        { "value": "17", "label": "Apparel & Accessories (17%)" },
+        { "value": "custom", "label": "Custom Referral %" }
+      ]
+    },
+    {
+      "id": "price",
+      "label": "Amazon Sale Price ($)",
+      "type": "number",
+      "default": 39.99,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "landed_cost",
+      "label": "Landed Unit Cost (Product + Freight/Duty) ($)",
+      "type": "number",
+      "default": 8.50,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "prep_cost",
+      "label": "Prep / Packaging / Misc Cost ($)",
+      "type": "number",
+      "default": 0.75,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "referral_pct",
+      "label": "Referral Fee (%)",
+      "type": "number",
+      "default": 15,
+      "min": 0,
+      "max": 45,
+      "step": "0.1"
+    },
+    {
+      "id": "fba_fee",
+      "label": "FBA Fulfillment Fee ($)",
+      "type": "number",
+      "default": 5.40,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "storage_fee",
+      "label": "Monthly Storage Fee per Unit ($)",
+      "type": "number",
+      "default": 0.35,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "acos_pct",
+      "label": "Target PPC Spend / TACoS (% of Sales)",
+      "type": "number",
+      "default": 12,
+      "min": 0,
+      "max": 100,
+      "step": "0.5"
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Net Profit per Unit", "default": "$14.19", "highlight": true },
+    { "id": "margin", "label": "Net Margin", "default": "35.48%" },
+    { "id": "roi", "label": "ROI on Cost", "default": "153.41%" },
+    { "id": "be_acos", "label": "Break-Even ACOS", "default": "47.49%" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Break-Even ACOS</strong> = <code>(Sale Price - Landed Cost - Prep - Referral Fee - FBA Fee - Storage) / Sale Price</code>.</p><p><strong>ROI</strong> = <code>Net Profit / (Landed Cost + Prep Cost)</code>.</p>",
+  "faqs": [
+    {
+      "q": "What is a good break-even ACOS on Amazon FBA?",
+      "a": "Experienced private-label sellers usually aim for a pre-ad margin (break-even ACOS) of 30%–45% so sponsored product ads remain profitable during launch and steady-state ranking."
+    },
+    {
+      "q": "Should I enter ACoS or TACoS?",
+      "a": "For unit-level profitability across all orders (organic + PPC), enter your TACoS (total ad spend divided by total revenue). For pure PPC-attributed orders, enter your target ACoS."
+    }
+  ],
+  "related": ["shopify-profit-margin-calculator", "wise-vs-bank-fx-calculator", "eu-vat-calculator"]
+}

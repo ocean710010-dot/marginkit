@@ -1,0 +1,87 @@
+{
+  "slug": "stripe-fee-calculator",
+  "title": "Stripe Fee Calculator (2026 Domestic & Cross-Border)",
+  "short_title": "Stripe Fee Calculator",
+  "category": "payments",
+  "category_label": "Payments",
+  "meta_description": "Calculate exact Stripe processing fees, international card surcharges, currency conversion fees, and reverse invoice amounts to net your target payout.",
+  "badge": "Most Popular",
+  "lead": "Instantly compute Stripe fees and net payouts, or reverse-calculate how much to bill clients so you receive an exact target payout.",
+  "inputs": [
+    {
+      "id": "mode",
+      "label": "Calculation Mode",
+      "type": "select",
+      "options": [
+        { "value": "forward", "label": "Forward — Enter invoice total to see net payout", "selected": true },
+        { "value": "reverse", "label": "Reverse — Enter target net payout to see invoice total" }
+      ]
+    },
+    {
+      "id": "preset",
+      "label": "Stripe Card & Region Preset",
+      "type": "select",
+      "options": [
+        { "value": "us_dom", "label": "US Domestic Card (2.9% + $0.30)", "selected": true },
+        { "value": "us_intl", "label": "US International Card (4.4% + $0.30)" },
+        { "value": "uk_dom", "label": "UK Standard Card (1.5% + £0.20)" },
+        { "value": "eu_eea", "label": "EU / EEA Standard Card (1.5% + €0.25)" },
+        { "value": "custom", "label": "Custom Rate" }
+      ]
+    },
+    {
+      "id": "amount",
+      "label": "Amount",
+      "type": "number",
+      "default": 1000,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "fee_pct",
+      "label": "Processing Percentage Fee (%)",
+      "type": "number",
+      "default": 2.9,
+      "min": 0,
+      "max": 50,
+      "step": "0.01"
+    },
+    {
+      "id": "fixed_fee",
+      "label": "Fixed Transaction Fee",
+      "type": "number",
+      "default": 0.30,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "fx_conversion",
+      "label": "Add Stripe currency conversion fee (+1.0%)",
+      "type": "checkbox",
+      "default": false
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Net Payout", "default": "$970.70", "highlight": true },
+    { "id": "fee", "label": "Total Stripe Fee", "default": "$29.30" },
+    { "id": "gross", "label": "Gross Charge", "default": "$1,000.00" },
+    { "id": "eff_rate", "label": "Effective Fee Rate", "default": "2.93%" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Forward (Invoice &rarr; Net Payout):</strong> <code>Fee = Gross &times; Rate + Fixed</code>, and <code>Net = Gross - Fee</code>.</p><p><strong>Reverse (Target Net &rarr; Invoice Total):</strong> <code>Gross = (Target Net + Fixed) / (1 - Rate)</code> so that after Stripe deducts its percentage on the full invoice, your payout equals the exact target net amount.</p>",
+  "faqs": [
+    {
+      "q": "Why can't I just add 2.9% + $0.30 to my target net amount?",
+      "a": "Stripe charges its percentage fee on the entire gross charge—including the extra fee you passed on. Using the reverse formula (Target + Fixed) / (1 - Rate) accounts for the fee-on-fee effect so you are never short."
+    },
+    {
+      "q": "When does Stripe add the 1.5% international card and 1% FX conversion fees?",
+      "a": "If a US merchant accepts a card issued outside the US, Stripe adds 1.5% for international cards, plus another 1.0% if currency conversion is required."
+    },
+    {
+      "q": "Does Stripe refund processing fees when I issue a refund?",
+      "a": "In most regions, Stripe does not return the original processing fees when a payment is refunded, making accurate upfront margin and fee planning critical."
+    }
+  ],
+  "related": ["paypal-fee-calculator", "wise-vs-bank-fx-calculator", "shopify-profit-margin-calculator"]
+}

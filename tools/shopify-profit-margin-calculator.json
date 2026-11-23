@@ -1,0 +1,100 @@
+{
+  "slug": "shopify-profit-margin-calculator",
+  "title": "Shopify Profit Margin, Break-Even ROAS & CPA Calculator",
+  "short_title": "Shopify Profit Calculator",
+  "category": "ecommerce",
+  "category_label": "E-commerce",
+  "meta_description": "Calculate true net profit per Shopify order, payment processing fees, return reserves, break-even ROAS, and maximum profitable CPA.",
+  "badge": "E-com Essential",
+  "lead": "Know your exact profit per order, break-even ROAS, and maximum affordable ad CPA before scaling paid traffic.",
+  "inputs": [
+    {
+      "id": "plan",
+      "label": "Shopify Plan (Online Card Rate)",
+      "type": "select",
+      "options": [
+        { "value": "basic", "label": "Basic (2.9% + $0.30)", "selected": true },
+        { "value": "grow", "label": "Shopify / Grow (2.7% + $0.30)" },
+        { "value": "advanced", "label": "Advanced (2.5% + $0.30)" },
+        { "value": "custom", "label": "Custom Processing Rate" }
+      ]
+    },
+    {
+      "id": "price",
+      "label": "Retail Price + Shipping Charged ($)",
+      "type": "number",
+      "default": 69,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "cogs",
+      "label": "Product Cost / COGS ($)",
+      "type": "number",
+      "default": 18,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "shipping",
+      "label": "Fulfillment & Shipping Cost ($)",
+      "type": "number",
+      "default": 6.50,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "ad_cpa",
+      "label": "Ad Spend per Order / CPA ($)",
+      "type": "number",
+      "default": 15,
+      "min": 0,
+      "step": "0.01"
+    },
+    {
+      "id": "refund_pct",
+      "label": "Expected Return / Refund Rate (%)",
+      "type": "number",
+      "default": 4,
+      "min": 0,
+      "max": 100,
+      "step": "0.1"
+    },
+    {
+      "id": "fee_pct",
+      "label": "Card Fee (%)",
+      "type": "number",
+      "default": 2.9,
+      "min": 0,
+      "max": 25,
+      "step": "0.01"
+    },
+    {
+      "id": "fixed_fee",
+      "label": "Fixed Transaction Fee ($)",
+      "type": "number",
+      "default": 0.30,
+      "min": 0,
+      "step": "0.01"
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Net Profit per Order", "default": "$24.44", "highlight": true },
+    { "id": "margin", "label": "Net Profit Margin", "default": "35.42%" },
+    { "id": "be_roas", "label": "Break-Even ROAS", "default": "1.75x" },
+    { "id": "be_cpa", "label": "Max Break-Even CPA", "default": "$39.44" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Break-Even CPA</strong> = <code>Selling Price - COGS - Shipping - Card Fee - Refund Reserve</code>.</p><p><strong>Break-Even ROAS</strong> = <code>Selling Price / Break-Even CPA</code>. Any ROAS higher than Break-Even ROAS generates net positive contribution margin.</p>",
+  "faqs": [
+    {
+      "q": "What is a healthy break-even ROAS for a Shopify store?",
+      "a": "Most direct-to-consumer brands target a break-even ROAS between 1.5x and 2.2x so there is enough room to scale Meta, TikTok, or Google ads profitably."
+    },
+    {
+      "q": "When does upgrading from Basic to Shopify Grow pay for itself?",
+      "a": "Dropping card fees from 2.9% to 2.7% saves $2 per $1,000 in GMV. Once your store passes roughly $25,000–$30,000 in monthly card volume, the fee savings often exceed the subscription difference."
+    }
+  ],
+  "related": ["amazon-fba-profit-calculator", "stripe-fee-calculator", "eu-vat-calculator"]
+}

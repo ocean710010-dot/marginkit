@@ -1,0 +1,57 @@
+{
+  "adsense_client": "",
+  "adsense_slots": {
+    "tool_top": "",
+    "tool_bottom": ""
+  },
+  "affiliates": {
+    "payments": {
+      "badge": "Lower Cross-Border Fees",
+      "title": "Save up to 3–4% on international payouts & multi-currency invoices",
+      "description": "Accepting USD, EUR, or GBP from overseas clients? Hold balances in local currency accounts and convert at mid-market exchange rates instead of paying hidden card FX markups.",
+      "cta_text": "Explore Wise Business",
+      "url": "https://wise.com/business/",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    },
+    "ecommerce": {
+      "badge": "Store & Margin Stack",
+      "title": "Launch or optimize your online store with lower transaction costs",
+      "description": "Higher Shopify plans reduce third-party and card processing rates as your monthly volume scales. Compare plans and built-in shipping discounts.",
+      "cta_text": "Compare Shopify Plans",
+      "url": "https://www.shopify.com/pricing",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    },
+    "tax": {
+      "badge": "Global Tax & Payouts",
+      "title": "Automate VAT invoicing and cross-border vendor settlements",
+      "description": "Selling across EU member states or invoicing international B2B clients? Pair clean VAT invoices with low-fee EUR/GBP local receiving accounts.",
+      "cta_text": "See Wise Business Accounts",
+      "url": "https://wise.com/business/",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    },
+    "saas": {
+      "badge": "SaaS Billing & Revenue",
+      "title": "Scale recurring SaaS revenue with built-in tax & dunning automation",
+      "description": "Reduce involuntary churn from failed renewals and automate global VAT/sales tax compliance across 100+ jurisdictions.",
+      "cta_text": "Explore Stripe Billing",
+      "url": "https://stripe.com/billing",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    },
+    "freelance": {
+      "badge": "Freelancer Banking",
+      "title": "Keep more of every international client retainer",
+      "description": "Stop losing $25–$45 wire fees and 3.5% exchange rate spreads on client invoices. Receive USD, EUR, and GBP like a local.",
+      "cta_text": "Open a Multi-Currency Account",
+      "url": "https://www.payoneer.com/",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    },
+    "fx": {
+      "badge": "Mid-Market FX Alternative",
+      "title": "Beat traditional bank wire markups on international transfers",
+      "description": "Traditional commercial banks typically embed 3%–4.5% in the exchange rate on top of wire fees. Compare transparent mid-market transfers.",
+      "cta_text": "Check Live Wise Rates",
+      "url": "https://wise.com/",
+      "disclosure": "Partner link — we may earn a commission at no extra cost to you."
+    }
+  }
+}

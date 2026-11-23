@@ -1,0 +1,95 @@
+{
+  "slug": "eu-vat-calculator",
+  "title": "EU VAT Calculator (2026 All 27 EU Countries + UK & Switzerland)",
+  "short_title": "EU VAT Calculator",
+  "category": "tax",
+  "category_label": "Tax & VAT",
+  "meta_description": "Add or remove Value Added Tax (VAT) instantly across all 27 EU member states, UK, Norway, and Switzerland with accurate 2026 standard VAT rates.",
+  "badge": "2026 Rates",
+  "lead": "Add VAT to a net B2B quote or extract VAT from a gross consumer receipt across every European jurisdiction.",
+  "inputs": [
+    {
+      "id": "mode",
+      "label": "VAT Direction",
+      "type": "select",
+      "options": [
+        { "value": "add", "label": "Add VAT (Net Amount → Gross Incl. VAT)", "selected": true },
+        { "value": "remove", "label": "Remove VAT (Gross Amount → Net Excl. VAT)" }
+      ]
+    },
+    {
+      "id": "country",
+      "label": "Country Standard VAT Rate",
+      "type": "select",
+      "options": [
+        { "value": "DE:19", "label": "Germany (19%)", "selected": true },
+        { "value": "FR:20", "label": "France (20%)" },
+        { "value": "NL:21", "label": "Netherlands (21%)" },
+        { "value": "ES:21", "label": "Spain (21%)" },
+        { "value": "IT:22", "label": "Italy (22%)" },
+        { "value": "IE:23", "label": "Ireland (23%)" },
+        { "value": "BE:21", "label": "Belgium (21%)" },
+        { "value": "AT:20", "label": "Austria (20%)" },
+        { "value": "PL:23", "label": "Poland (23%)" },
+        { "value": "SE:25", "label": "Sweden (25%)" },
+        { "value": "DK:25", "label": "Denmark (25%)" },
+        { "value": "FI:25.5", "label": "Finland (25.5%)" },
+        { "value": "PT:23", "label": "Portugal (23%)" },
+        { "value": "CZ:21", "label": "Czechia (21%)" },
+        { "value": "RO:19", "label": "Romania (19%)" },
+        { "value": "HU:27", "label": "Hungary (27%)" },
+        { "value": "GR:24", "label": "Greece (24%)" },
+        { "value": "BG:20", "label": "Bulgaria (20%)" },
+        { "value": "HR:25", "label": "Croatia (25%)" },
+        { "value": "SK:23", "label": "Slovakia (23%)" },
+        { "value": "SI:22", "label": "Slovenia (22%)" },
+        { "value": "EE:22", "label": "Estonia (22%)" },
+        { "value": "LV:21", "label": "Latvia (21%)" },
+        { "value": "LT:21", "label": "Lithuania (21%)" },
+        { "value": "LU:17", "label": "Luxembourg (17%)" },
+        { "value": "CY:19", "label": "Cyprus (19%)" },
+        { "value": "MT:18", "label": "Malta (18%)" },
+        { "value": "UK:20", "label": "United Kingdom (20%)" },
+        { "value": "CH:8.1", "label": "Switzerland (8.1%)" },
+        { "value": "NO:25", "label": "Norway (25%)" },
+        { "value": "CUSTOM", "label": "Custom VAT Rate" }
+      ]
+    },
+    {
+      "id": "rate",
+      "label": "VAT Rate (%)",
+      "type": "number",
+      "default": 19,
+      "min": 0,
+      "max": 50,
+      "step": "0.1"
+    },
+    {
+      "id": "amount",
+      "label": "Amount (€ / £ / $)",
+      "type": "number",
+      "default": 1000,
+      "min": 0,
+      "step": "0.01"
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Gross Amount (Incl. VAT)", "default": "€1,190.00", "highlight": true },
+    { "id": "vat", "label": "VAT Amount", "default": "€190.00" },
+    { "id": "net", "label": "Net Amount (Excl. VAT)", "default": "€1,000.00" },
+    { "id": "rate_out", "label": "Applied VAT Rate", "default": "19.00%" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Add VAT:</strong> <code>VAT = Net &times; (Rate / 100)</code> and <code>Gross = Net + VAT</code>.</p><p><strong>Remove VAT:</strong> <code>Net = Gross / (1 + Rate / 100)</code> and <code>VAT = Gross - Net</code>. Never multiply Gross directly by the VAT rate.</p>",
+  "faqs": [
+    {
+      "q": "Why doesn't removing 20% VAT equal multiplying gross by 0.80?",
+      "a": "Because VAT is added on top of the net base. On a €100 net item at 20% VAT, the gross price is €120. Removing 20% VAT means dividing €120 by 1.20 to get back to €100 (€20 VAT), whereas 120 × 0.80 would wrongly give €96."
+    },
+    {
+      "q": "When does EU B2B reverse charge (0% VAT) apply?",
+      "a": "Cross-border B2B sales between VAT-registered businesses in two different EU member states typically use the reverse charge mechanism where the invoice carries 0% VAT and the buyer accounts for VAT locally."
+    }
+  ],
+  "related": ["stripe-fee-calculator", "freelance-hourly-rate-calculator", "wise-vs-bank-fx-calculator"]
+}

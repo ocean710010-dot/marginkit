@@ -1,0 +1,84 @@
+{
+  "slug": "freelance-hourly-rate-calculator",
+  "title": "Freelance Hourly & Day Rate Calculator (After Taxes & Time Off)",
+  "short_title": "Freelance Rate Calculator",
+  "category": "freelance",
+  "category_label": "Freelance",
+  "meta_description": "Calculate the minimum freelance hourly and day rate needed to hit your take-home income goal after taxes, overhead expenses, vacation weeks, and non-billable time.",
+  "badge": "Pricing Tool",
+  "lead": "Translate your target take-home salary into a sustainable hourly rate and day rate that covers taxes, software overhead, vacation, and unbilled admin hours.",
+  "inputs": [
+    {
+      "id": "target_net",
+      "label": "Target Annual Take-Home Income ($)",
+      "type": "number",
+      "default": 120000,
+      "min": 0,
+      "step": "1000"
+    },
+    {
+      "id": "tax_pct",
+      "label": "Effective Tax Rate (Income + Self-Employment) (%)",
+      "type": "number",
+      "default": 28,
+      "min": 0,
+      "max": 75,
+      "step": "0.5"
+    },
+    {
+      "id": "overhead",
+      "label": "Annual Business Overhead (Software, Gear, Insurance) ($)",
+      "type": "number",
+      "default": 8000,
+      "min": 0,
+      "step": "250"
+    },
+    {
+      "id": "weeks_off",
+      "label": "Weeks Off per Year (Vacation + Sick/Holidays)",
+      "type": "number",
+      "default": 4,
+      "min": 0,
+      "max": 50,
+      "step": "1"
+    },
+    {
+      "id": "hours_week",
+      "label": "Total Working Hours per Week",
+      "type": "number",
+      "default": 40,
+      "min": 1,
+      "max": 100,
+      "step": "1"
+    },
+    {
+      "id": "billable_pct",
+      "label": "Billable Utilization (%)",
+      "type": "number",
+      "default": 65,
+      "min": 10,
+      "max": 100,
+      "step": "5",
+      "hint": "Typical solo consultants bill 60%–75% of total hours; the rest goes to sales, proposals, and admin."
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Minimum Hourly Rate", "default": "$139.96", "highlight": true },
+    { "id": "day_rate", "label": "8-Hour Day Rate", "default": "$1,119.66" },
+    { "id": "req_gross", "label": "Required Annual Revenue", "default": "$174,666.67" },
+    { "id": "monthly_rev", "label": "Monthly Revenue Target", "default": "$14,555.56" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Required Gross Revenue</strong> = <code>(Target Net Income / (1 - Tax Rate)) + Annual Overhead</code>.</p><p><strong>Billable Hours / Year</strong> = <code>(52 - Weeks Off) &times; Weekly Hours &times; Utilization%</code>. Dividing Required Gross Revenue by Billable Hours yields your break-even hourly quote.</p>",
+  "faqs": [
+    {
+      "q": "Why should billable utilization be below 100%?",
+      "a": "No independent consultant bills all 40 hours every week. Client prospecting, invoicing, bookkeeping, and skill maintenance usually consume 25%–40% of your working week."
+    },
+    {
+      "q": "How does a W-2 salary compare to a freelance hourly rate?",
+      "a": "A common rule of thumb is dividing an equivalent full-time salary by 1,000 rather than 2,080 to account for employer payroll taxes, health insurance, paid leave, and unbilled bench time."
+    }
+  ],
+  "related": ["stripe-fee-calculator", "paypal-fee-calculator", "wise-vs-bank-fx-calculator"]
+}

@@ -1,0 +1,74 @@
+{
+  "slug": "wise-vs-bank-fx-calculator",
+  "title": "International Wire vs Low-Cost FX Fee Savings Calculator",
+  "short_title": "Bank Wire vs FX Savings Calculator",
+  "category": "fx",
+  "category_label": "Cross-Border FX",
+  "meta_description": "Compare traditional bank wire transfer fees and hidden 3%–4.5% exchange rate markups against transparent mid-market FX providers like Wise.",
+  "badge": "Save FX",
+  "lead": "Uncover how much hidden bank exchange rate spreads cost your business per transfer and over an entire year.",
+  "inputs": [
+    {
+      "id": "amount",
+      "label": "Transfer Amount ($)",
+      "type": "number",
+      "default": 10000,
+      "min": 0,
+      "step": "100"
+    },
+    {
+      "id": "transfers_yr",
+      "label": "Transfers per Year",
+      "type": "number",
+      "default": 12,
+      "min": 1,
+      "step": "1"
+    },
+    {
+      "id": "bank_wire",
+      "label": "Traditional Bank Outgoing/SWIFT Wire Fee ($)",
+      "type": "number",
+      "default": 35,
+      "min": 0,
+      "step": "1"
+    },
+    {
+      "id": "bank_markup",
+      "label": "Bank Exchange Rate Spread (%)",
+      "type": "number",
+      "default": 3.5,
+      "min": 0,
+      "max": 15,
+      "step": "0.1",
+      "hint": "Commercial banks typically hide a 3.0%–4.5% markup inside the quoted FX rate."
+    },
+    {
+      "id": "fx_fee_pct",
+      "label": "Low-Cost Mid-Market Provider Total Fee (%)",
+      "type": "number",
+      "default": 0.45,
+      "min": 0,
+      "max": 10,
+      "step": "0.05"
+    }
+  ],
+  "outputs": [
+    { "id": "primary", "label": "Annual Savings", "default": "$4,080.00", "highlight": true },
+    { "id": "save_tx", "label": "Savings per Transfer", "default": "$340.00" },
+    { "id": "bank_cost", "label": "Bank Total Cost / Transfer", "default": "$385.00" },
+    { "id": "fx_cost", "label": "Low-Cost Provider / Transfer", "default": "$45.00" }
+  ],
+  "chart": false,
+  "formula_html": "<p><strong>Bank Cost</strong> = <code>Wire Fee + Transfer Amount &times; Bank FX Spread%</code>.</p><p><strong>Savings per Transfer</strong> = <code>Bank Cost - (Transfer Amount &times; Low-Cost Provider%)</code>, multiplied by your annual transfer count.</p>",
+  "faqs": [
+    {
+      "q": "Why does my bank say '$0 wire fee' when exchanging currency?",
+      "a": "Banks often waive the explicit $25–$45 wire fee while widening the bid-ask exchange rate spread by 3% to 5%. On a $10,000 supplier invoice, a 3.5% FX markup silently costs $350."
+    },
+    {
+      "q": "How do I check my bank's hidden FX markup?",
+      "a": "Compare your bank's quoted rate against the real-time mid-market rate on Google or Reuters at the exact same moment. The percentage gap is your hidden fee."
+    }
+  ],
+  "related": ["stripe-fee-calculator", "paypal-fee-calculator", "amazon-fba-profit-calculator"]
+}
