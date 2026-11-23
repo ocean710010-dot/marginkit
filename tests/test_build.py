@@ -91,6 +91,13 @@ class TestSiteBuild(unittest.TestCase):
         for slug in EXPECTED_TOOLS:
             self.assertIn(f"{bu}/tools/{slug}/", sitemap)
 
+    def test_indexnow_key_file_generated(self) -> None:
+        key = (self.site.get("indexnow_key") or "").strip()
+        self.assertTrue(key, "Expected non-empty indexnow_key in config/site.json")
+        key_file = self.dist / f"{key}.txt"
+        self.assertTrue(key_file.exists(), f"Missing IndexNow key file: {key_file}")
+        self.assertEqual(key_file.read_text(encoding="utf-8"), key)
+
 
 class TestKeywordMiner(unittest.TestCase):
     def test_slug_and_scoring(self) -> None:

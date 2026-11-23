@@ -56,6 +56,14 @@ def render_head(
             f'?client={esc(adsense_client)}" crossorigin="anonymous"></script>'
         )
 
+    verify_tags = ""
+    google_verify = (site.get("google_site_verification") or "").strip()
+    bing_verify = (site.get("bing_site_verification") or "").strip()
+    if google_verify:
+        verify_tags += f'\n  <meta name="google-site-verification" content="{esc(google_verify)}">'
+    if bing_verify:
+        verify_tags += f'\n  <meta name="msvalidate.01" content="{esc(bing_verify)}">'
+
     ld_tags = ""
     if json_ld_blocks:
         parts = []
@@ -71,7 +79,7 @@ def render_head(
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
-  <link rel="canonical" href="{esc(canonical_url)}">
+  <link rel="canonical" href="{esc(canonical_url)}">{verify_tags}
   <meta property="og:type" content="website">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(description)}">
@@ -157,15 +165,24 @@ def render_field(field: dict[str, Any]) -> str:
 def render_ad_slot(monetization: dict[str, Any], slot_key: str) -> str:
     client = (monetization.get("adsense_client") or "").strip()
     slot_id = (monetization.get("adsense_slots", {}).get(slot_key) or "").strip()
-    if not client or not slot_id:
-        return ""
-    return (
-        f'<div class="ad-slot" aria-label="Advertisement">'
-        f'<ins class="adsbygoogle" style="display:block" data-ad-client="{esc(client)}" '
-        f'data-ad-slot="{esc(slot_id)}" data-ad-format="auto" data-full-width-responsive="true"></ins>'
-        f"<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>"
-        f"</div>"
-    )
+    if client and slot_id:
+        return (
+            f'<div class="ad-slot" aria-label="Advertisement">'
+            f'<ins class="adsbygoogle" style="display:block" data-ad-client="{esc(client)}" '
+            f'data-ad-slot="{esc(slot_id)}" data-ad-format="auto" data-full-width-responsive="true"></ins>'
+            f"<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>"
+            f"</div>"
+        )
+    aads_id = str(monetization.get("aads_unit_id") or "").strip()
+    if slot_key == "tool_bottom" and aads_id:
+        return (
+            f'<div class="ad-slot" aria-label="Advertisement">'
+            f'<iframe data-aa="{esc(aads_id)}" src="https://ad.a-ads.com/{esc(aads_id)}?size=728x90" '
+            f'style="width:728px;max-width:100%;height:90px;border:0;padding:0;overflow:hidden;background-color:transparent;" '
+            f'title="Sponsored Banner"></iframe>'
+            f"</div>"
+        )
+    return ""
 
 
 def render_affiliate(monetization: dict[str, Any], category: str) -> str:
@@ -583,6 +600,9 @@ def build() -> dict[str, int]:
         DIST_DIR / "robots.txt",
         f"User-agent: *\nAllow: /\nSitemap: {canonical_for(site['base_url'], 'sitemap.xml')}\n",
     )
+    indexnow_key = (site.get("indexnow_key") or "").strip()
+    if indexnow_key:
+        write_text(DIST_DIR / f"{indexnow_key}.txt", indexnow_key)
     write_text(DIST_DIR / ".nojekyll", "")
 
     return {"tools": len(tools), "urls": len(sitemap_urls)}
